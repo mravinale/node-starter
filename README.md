@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/mravinale/node-starter.svg?style=shield)](https://circleci.com/gh/mravinale/node-starter)
+![](https://img.shields.io/docker/pulls/mravinale/node-starter.svg?style=flat)
+
 # Node Starter
 
 

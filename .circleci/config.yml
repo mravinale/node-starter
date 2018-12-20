@@ -94,7 +94,7 @@ jobs:
             command: |
               docker build -t mravinale/node-starter .
               docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push mravinale/node-starter:dev
+              docker push mravinale/node-starter
 
 workflows:
   version: 2
