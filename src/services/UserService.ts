@@ -25,26 +25,34 @@ export class UserService extends BaseService<IUserDto> {
   }
 
   public async getPaginated(args: any): Promise<PaginationDto> {
-    let page = args.page === 0 ? args.page : args.page - 1;
+
+    let page = args.page >= 0 ? args.page : 0;
     let filter =  isNullOrUndefined(args.filter) ? "%" : "%" + args.filter + "%";
-    let field =  isNullOrUndefined(args.field) ? "id" : args.field;
+    let field =  isNullOrUndefined(args.field) ? "name" : args.field;
     let sort = args.sort ? args.sort.toUpperCase() : "ASC";
 
-    let count = await this.userRepository.count();
+    const count = await this.userRepository
+      .createQueryBuilder('user')
+      .where(`${field} like :filter`, { filter: filter })
+      .select('DISTINCT(`id`)')
+      .getCount();
+
     let data = await this.userRepository
-      .createQueryBuilder("user")
-      .skip(page)
+      .createQueryBuilder("article")
+      .skip(page * args.limit)
       .take(args.limit)
       .where(`${field} like :filter`, { filter: filter })
       .orderBy(field, sort)
-      .getRawMany();
+      .getMany();
 
     return new PaginationDto({
       count: count,
       page: page,
       limit: args.limit,
-      docs: data,
-      totalPages: Math.round(count / args.limit) + 1
+      sort: sort,
+      filter: args.filter,
+      totalPages: Math.ceil(count / args.limit),
+      docs: data
     });
   }
 

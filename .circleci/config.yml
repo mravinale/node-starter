@@ -78,12 +78,12 @@ jobs:
           at: ~/repo
       - run:
           name: Build
-          command: yarn build
+          command: yarn build:tsoa
       - persist_to_workspace:
           root: .
           paths:
             # This path can be used by other jobs
-            - dist
+            - build
 
   deploy-dev:
       machine: true
@@ -92,11 +92,9 @@ jobs:
         - run:
             name: Build and push Docker image to development
             command: |
-              docker build -t connectingthings/cms-social-api:dev .
+              docker build -t mravinale/node-starter .
               docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker push connectingthings/cms-social-api:dev
-              apt-get update && apt-get install -y awscli
-              /bin/bash scripts/EB-deploy.dev.sh $CIRCLE_SHA1
+              docker push mravinale/node-starter:dev
 
 workflows:
   version: 2

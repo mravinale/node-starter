@@ -23,7 +23,7 @@ RUN chmod -R 777 var/www/node /var/log/
 RUN useradd -m node && mkdir /var/log/nodejs && chown -R node:node /var/www/node /var/log/
 
 # Install all my packages and build
-RUN	cd /var/www/node && /sbin/setuser node yarn install && /sbin/setuser node yarn build
+RUN	cd /var/www/node && /sbin/setuser node yarn install && /sbin/setuser node yarn build:tsoa
 
 # Open local port 3000
 EXPOSE	3030

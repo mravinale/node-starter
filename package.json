@@ -1,5 +1,5 @@
 {
-  "name": "cms-social-media",
+  "name": "node-starter",
   "version": "0.1.0",
   "description": "API backend based on tsoa-api",
   "main": "",
@@ -18,10 +18,11 @@
     "start": "yarn start:dev",
     "start:local": "yarn build:tsoa && yarn env:local ts-node-dev --respawn ./src",
     "start:dev": "yarn build:tsoa && yarn env:dev ts-node-dev --respawn ./src",
+    "build": "yarn build:prod",
     "build:routes": "tsoa routes",
     "build:swagger": "tsoa swagger --basePath /service",
     "build:tsoa": "yarn clean && yarn build:routes && yarn build:swagger",
-    "build": "yarn build:prod",
+    "build:prod": "yarn build:tsoa && tsc && yarn copy",
     "lint": "tslint -c \"./tslint.json\" -p \"./tsconfig.json\"",
     "clean": "rm -rf ./dist && rm -rf ./build && mkdir build",
     "copy": "yarn copy:swagger && yarn copy:env",
@@ -29,13 +30,9 @@
     "copy:env": "cp -R ./src/config/env ./dist/src/config/env",
     "env:local": "cross-env NODE_ENV=local",
     "env:dev": "cross-env NODE_ENV=development",
-    "env:test": "cross-env NODE_ENV=test",
-    "migrate:local": "yarn env:local cross-env MIGRATION_DIRECTION=up cross-env MIGRATION_ACTION=migrations ts-node ./src/setup/migrateSql.ts --exit",
-    "migrate:undo:local": "yarn env:local cross-env MIGRATION_DIRECTION=down MIGRATION_ACTION=migrations ts-node ./src/setup/migrateSql.ts --exit",
-    "migrate:dev": "yarn env:dev cross-env MIGRATION_DIRECTION=up cross-env MIGRATION_ACTION=migrations ts-node ./src/setup/migrateSql.ts --exit",
-    "migrate:undo:dev": "yarn env:dev cross-env MIGRATION_DIRECTION=down MIGRATION_ACTION=migrations ts-node ./src/setup/migrateSql.ts --exit"
+    "env:test": "cross-env NODE_ENV=test"
   },
-  "author": "Nexton Labs",
+  "author": "Mariano Ravinale",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.217.1",

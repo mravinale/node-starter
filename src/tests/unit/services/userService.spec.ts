@@ -18,7 +18,7 @@ describe.skip("BaseService", () => {
   });
 
   it("should getPaginated", async () => {
-    const res = await service.getPaginated(1, 100, null, null, null);
+    const res = await service.getPaginated({ page: 0, limit: 10, sort: "ASC", field: "name", filter: "" });
     expect(res).to.have.property("count");
     expect(res).to.have.property("page");
     expect(res).to.have.property("limit");

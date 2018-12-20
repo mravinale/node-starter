@@ -18,7 +18,9 @@ export class SQLDbConnection {
       username: config.username,
       password: config.password,
       database: config.username,
-      entities: ["src/persistance/entity/*.ts"]
+      entities: ["src/persistance/entity/*.ts"],
+      synchronize: true,
+      migrations: ["src/persisntance/migration/*.js"]
     })
       .then(async connection => {
         Logger.info(`connected to ${constants.environment} SQL`);

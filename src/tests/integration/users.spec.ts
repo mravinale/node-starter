@@ -48,7 +48,7 @@ describe.skip(`${route}`, () => {
   describe('GET', () => {
     it(`should get paginated: ${entityName}`, async () => {
       const res = await app.get(
-        `${route}?page=1&limit=1&sort={"email":"asc"}&fields=email&q={"id":"${model.id}"}`
+        `${route}?page=0&limit=10&sort=ASC&field=name&filter=${model.name}"}`
       );
       integrationHelper.testPagination(res);
     });
