@@ -9,7 +9,7 @@
  * start with dev database `yarn start:dev`
  * start with local database `yarn start:local dbname={dbname} dbusername={dbusername} dbpassword={dbpassword}`
 
-# tsoa api
+# Tech Stack
 * This project is a seed for building a **node.js** api. It includes the following features:
 * * [tsoa](https://www.npmjs.com/package/tsoa) `typescript`
 * * [inversify](https://www.npmjs.com/package/inversify) `inversion of controll / dependency injection`
@@ -17,8 +17,11 @@
 * * [typeorm](https://www.npmjs.com/package/typeorm) `SQL ORM`
 * * [mocha](https://www.npmjs.com/package/mocha), [chai](https://www.npmjs.com/package/chai), [supertest](https://www.npmjs.com/package/supertest), [sinon](https://www.npmjs.com/package/sinon) `unit and integration testing`
 
-## Swagger
+## Whre can I find the API Swagger documentation ?
 * `<url>/api-docs`
+
+## which is the endpoint URL?
+* `<url>/service`
 
 ## Commands
 * **instalation:** `yarn install`
