@@ -1,10 +1,9 @@
 import { ProvideSingleton } from "../ioc";
 import { BaseService } from "./BaseService";
 import { IUserDto, PaginationDto } from "./dto";
-
+import { isNil} from "lodash"
 import { getRepository } from "typeorm";
 import { User } from "../persistance/entity/User";
-import { isNullOrUndefined } from 'util';
 
 @ProvideSingleton(UserService)
 export class UserService extends BaseService<IUserDto> {
@@ -27,8 +26,8 @@ export class UserService extends BaseService<IUserDto> {
   public async getPaginated(args: any): Promise<PaginationDto> {
 
     let page = args.page >= 0 ? args.page : 0;
-    let filter =  isNullOrUndefined(args.filter) ? "%" : "%" + args.filter + "%";
-    let field =  isNullOrUndefined(args.field) ? "name" : args.field;
+    let filter =  isNil(args.filter) ? "%" : "%" + args.filter + "%";
+    let field =  isNil(args.field) ? "name" : args.field;
     let sort = args.sort ? args.sort.toUpperCase() : "ASC";
 
     const count = await this.userRepository
@@ -57,7 +56,7 @@ export class UserService extends BaseService<IUserDto> {
   }
 
   public async delete(id: string): Promise<string> {
-    return await this.userRepository.delete(1);
+    return await this.userRepository.delete(id);
   }
 
   public async update(id: string, entity: IUserDto): Promise<IUserDto> {
