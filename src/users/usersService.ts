@@ -1,8 +1,10 @@
 import { User } from "./user";
+import { singleton } from 'tsyringe';
 
 // A post request should not contain an id.
 export type UserCreationParams = Pick<User, "email" | "name" | "phoneNumbers">;
 
+@singleton()
 export class UsersService {
     public get(id: number, name?: string): User {
         return {
