@@ -1,4 +1,3 @@
-
 import bodyParser from "body-parser";
 import { RegisterRoutes } from "../build/routes";
 import express, { Response as ExResponse, Request as ExRequest } from "express";
@@ -27,4 +26,3 @@ app.use("/docs", swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
 app.use(morgan("dev", { skip: () => !Logger.shouldLog }));
 RegisterRoutes(app);
 app.use(ErrorHandler.handleError);
-

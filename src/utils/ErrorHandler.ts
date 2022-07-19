@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import constants from './constants';
+import constants from './../config/constants';
 import { Logger } from './Logger';
 
 export interface ErrorType {
