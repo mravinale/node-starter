@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 import supertest from 'supertest';
 
-import { app } from "../../../../app";
+import { Server } from "../../../../config/server";
 const entityName: string = 'user';
 
 describe(`users`, () => {
 
-  const server = supertest(app);
+  const server = supertest(new Server().app);
 
   describe('GET /{id}', () => {
     it(`should get one: ${entityName}`, async () => {

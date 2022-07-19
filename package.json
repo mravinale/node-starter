@@ -10,7 +10,7 @@
     "test:unit": "yarn build && yarn env:test nyc mocha --timeout 10000 -r ts-node/register ./src/**/test/unit/*.spec.ts",
     "test:integration": "yarn build && yarn env:test mocha --timeout 35000 -r ts-node/register ./src/**/test/integration/*.spec.ts --exit",
     "start:local": "yarn build && yarn env:local concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes && tsc \"",
-    "start:dev": "yarn build && yarn env:dev ts-node-dev ./src/server.ts",
+    "start:dev": "yarn build && yarn env:dev ts-node-dev ./src/index.ts",
     "start:test": "yarn lint && yarn test:unit && yarn test:integration",
     "env:local": "cross-env NODE_ENV=local",
     "env:dev": "cross-env NODE_ENV=development",
