@@ -17,7 +17,7 @@ describe("UsersService", () => {
 
   it("should getById", async () => {
     const res = await service.get(12);
-    expect(res).to.have.property("id");
+    expect(res).to.have.property("name");
   });
 
 });

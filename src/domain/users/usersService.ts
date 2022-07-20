@@ -1,26 +1,18 @@
-import { User } from "./user";
+import { IUserDto, UserDto } from "./userDto";
 import { singleton } from 'tsyringe';
-
-// A post request should not contain an id.
-export type UserCreationParams = Pick<User, "email" | "name" | "phoneNumbers">;
 
 @singleton()
 export class UsersService {
-    public get(id: number, name?: string): User {
-        return {
-            id,
+    public get(id: number, name?: string): IUserDto {
+        return new UserDto( {
             email: "jane@doe.com",
             name: name ?? "Jane Doe",
-            status: "Happy",
-            phoneNumbers: [],
-        };
+            phone: "Happy",
+            skype: "123123",
+        });
     }
 
-    public create(userCreationParams: UserCreationParams): User {
-        return {
-            id: Math.floor(Math.random() * 10000), // Random
-            status: "Happy",
-            ...userCreationParams,
-        };
+    public create(user: IUserDto): IUserDto {
+        return user ;
     }
 }

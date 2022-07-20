@@ -13,7 +13,7 @@ describe(`users`, () => {
       const id = 2;
       const res = await server.get(`/users/${id}`);
       expect(res.status).to.equal(200);
-      expect(res.body.id).to.deep.equal(id);
+      expect(res.body).to.have.property("name");
     });
 
     it(`should FAIL to get one: ${entityName}`, async () => {

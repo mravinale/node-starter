@@ -1,6 +1,6 @@
 # node-starter-v2
 
-[![Node.js CI](https://github.com/mravinale/node-starter-v2/actions/workflows/node.js.yml/badge.svg)](https://github.com/mravinale/node-starter-v2/actions/workflows/node.js.yml)
+[![node-starter](https://github.com/mravinale/node-starter-v2/actions/workflows/node-starter.yml/badge.svg)](https://github.com/mravinale/node-starter-v2/actions/workflows/node-starter.yml)
 
 
 ## Start application

@@ -8,8 +8,8 @@ import {
     Route,
     SuccessResponse,
 } from "tsoa";
-import { User } from "./user";
-import { UsersService, UserCreationParams } from "./usersService";
+import { IUserDto } from "./userDto";
+import { UsersService } from "./usersService";
 import { injectable } from 'tsyringe';
 
 @injectable()
@@ -23,14 +23,14 @@ export class UsersController extends Controller {
     public async getUser(
         @Path() userId: number,
         @Query() name?: string
-    ): Promise<User> {
+    ): Promise<IUserDto> {
         return this.usersService.get(userId, name);
     }
 
     @SuccessResponse("201", "Created") // Custom success response
     @Post()
     public async createUser(
-        @Body() requestBody: UserCreationParams
+        @Body() requestBody: IUserDto
     ): Promise<void> {
         this.setStatus(201); // set return status 201
         this.usersService.create(requestBody);
