@@ -1,0 +1,51 @@
+{
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:726564672946:task-definition/node-starter-ecs2:3",
+  "containerDefinitions": [
+    {
+      "name": "node-starter",
+      "image": "726564672946.dkr.ecr.us-east-1.amazonaws.com/node-starter",
+      "cpu": 0,
+      "memory": 128,
+      "portMappings": [
+        {
+          "containerPort": 3030,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [],
+      "mountPoints": [],
+      "volumesFrom": []
+    }
+  ],
+  "family": "node-starter-ecs2",
+  "taskRoleArn": "arn:aws:iam::726564672946:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::726564672946:role/ecsTaskExecutionRole",
+  "networkMode": "bridge",
+  "revision": 3,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+    "EXTERNAL",
+    "EC2"
+  ],
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "registeredAt": "2022-07-25T02:50:51.505Z",
+  "registeredBy": "arn:aws:iam::726564672946:root",
+  "tags": []
+}
