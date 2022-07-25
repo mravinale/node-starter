@@ -1,6 +1,6 @@
 {
-  "name": "node-starter-v2",
-  "version": "1.0.0",
+  "name": "node-starter",
+  "version": "2.0.0",
   "scripts": {
     "local": "yarn start:local",
     "dev": "yarn start:dev",

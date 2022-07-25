@@ -5,6 +5,7 @@ on:
     branches:
     - main
     - release/*
+    - aws-ecs
   pull_request:
     branches:
     - main
@@ -58,3 +59,4 @@ jobs:
         with:
           push: true
           tags: mravinale/node-starter-v2:latest
+

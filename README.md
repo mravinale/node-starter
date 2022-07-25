@@ -1,7 +1,6 @@
 # node-starter-v2
 
-[![node-starter](https://github.com/mravinale/node-starter-v2/actions/workflows/node-starter.yml/badge.svg)](https://github.com/mravinale/node-starter-v2/actions/workflows/node-starter.yml)
-
+[![node-starter](https://github.com/mravinale/node-starter-v2/actions/workflows/aws-ecs.yml/badge.svg)](https://github.com/mravinale/node-starter-v2/actions/workflows/aws-ecs.yml)
 
 ## Start application
  
@@ -27,4 +26,16 @@
 * **build:** `yarn build` *production build*
 * **dev:** `yarn dev` *starts the server on development mode*
 * **local** `yarn local` *lets start nodemon locally*
+
+# CI/CD
+Current Github Actions workflows is implemented for CI/CD
+
+Workflow Summary
+* Runs tests
+* Creates new [Docker](https://www.docker.com/) image
+* Pushes new docker version into [AWS ECR](https://aws.amazon.com/ecr/)
+* Deploys new version into [AWS ECS](https://aws.amazon.com/ecs/) Cluster
+
+# See it live deployed at ECS here:
+* [http://ec2-54-87-32-205.compute-1.amazonaws.com/docs/](http://ec2-54-87-32-205.compute-1.amazonaws.com/docs/)
 
