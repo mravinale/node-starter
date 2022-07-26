@@ -1,8 +1,9 @@
-import { resolve as pathResolve } from 'path';
 import { config } from 'dotenv';
-
+import { resolve as pathResolve } from 'path';
 const { env } = process;
-config({ path: pathResolve(__dirname, `./env/.env.${env.NODE_ENV}`) });
+
+const result = config({ path: pathResolve(__dirname, `./env/.env.${env.NODE_ENV}`), debug: true });
+if (result.error) throw result.error
 
 export default {
   environment: env.NODE_ENV,

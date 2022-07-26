@@ -1,13 +1,4 @@
-import {
-    Body,
-    Controller,
-    Get,
-    Path,
-    Post,
-    Query,
-    Route,
-    SuccessResponse,
-} from "tsoa";
+import { Body, Controller, Get, Post, Route, SuccessResponse } from "tsoa";
 import { IUserDto } from "./userDto";
 import { UsersService } from "./usersService";
 import { injectable } from 'tsyringe';
@@ -20,11 +11,8 @@ export class UsersController extends Controller {
     }
 
     @Get("{userId}")
-    public async getUser(
-        @Path() userId: number,
-        @Query() name?: string
-    ): Promise<IUserDto> {
-        return this.usersService.get(userId, name);
+    public async getUser( userId: string ): Promise<IUserDto> {
+        return this.usersService.get(userId);
     }
 
     @SuccessResponse("201", "Created") // Custom success response
