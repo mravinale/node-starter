@@ -6,12 +6,15 @@ import morgan from "morgan";
 import { ErrorHandler } from "../utils/ErrorHandler";
 import { Logger } from "../utils/Logger";
 import constants from "./constants";
+import { autoInjectable } from 'tsyringe';
+import { DbConnection } from './dbConnection'
 
+@autoInjectable()
 export class Server {
 
     public app: express.Express = express();
 
-    constructor() {
+    constructor(private dbConnection?: DbConnection) {
         // Use body parser to read sent json payloads
         this.app.use(
             bodyParser.urlencoded({
@@ -31,9 +34,11 @@ export class Server {
         this.app.use(ErrorHandler.handleError);
     }
 
-    public async start(port: number = this.port) {
-        process.on("uncaughtException", this.criticalErrorHandler);
-        process.on("unhandledRejection", this.criticalErrorHandler);
+    public async start() {
+        process.on("uncaughtException", Server.unhandledRejectionHandler);
+        process.on("unhandledRejection", Server.uncaughtExceptionHandler);
+
+        if (this.dbConnection) await this.dbConnection.initializeDbConnection();
 
         const listen = this.app.listen(this.port);
         Logger.info(
@@ -42,10 +47,14 @@ export class Server {
         return listen;
     }
 
-    private readonly port: number = constants.port;
-
-    private criticalErrorHandler(...args) {
-        Logger.error("Critical Error...", ...args);
+    private static unhandledRejectionHandler(err) {
+        Logger.error('Uncaught Exception thrown', err);
         process.exit(1);
     }
+    private static uncaughtExceptionHandler(reason) {
+        Logger.error('Unhandled Rejection at Promise', reason.stack);
+        process.exit(1);
+    }
+
+    private readonly port: number = constants.port;
 }
