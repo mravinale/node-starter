@@ -7,6 +7,8 @@ CMD   ["/sbin/my_init"]
 # Copy source files to container
 COPY	. /var/www/node
 
+RUN npm install tsc --location=global
+
 RUN npm install pm2 --location=global --omit=optional
 
 # Install all my packages and build

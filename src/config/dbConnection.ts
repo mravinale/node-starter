@@ -1,7 +1,8 @@
 import constants from "./constants";
 import { Logger } from "../utils/Logger";
 import { singleton } from 'tsyringe';
-import { DataSource } from "typeorm"
+import { DataSource } from "typeorm";
+import { resolve } from 'path';
 
 @singleton()
 export class DbConnection {
@@ -11,6 +12,8 @@ export class DbConnection {
     // const config = constants.SQL;
     Logger.info(`connecting to ${constants.environment} SQL ...`);
 
+    const domainPath = resolve(__dirname, '..', 'domain');
+
     this.datasource = new DataSource({
       type: "postgres",
       host: "pellefant.db.elephantsql.com",
@@ -18,9 +21,9 @@ export class DbConnection {
       username: "tkqnwnfo",
       password: "WxTKFisDu7oX661MhEVmfNvHYwZUyypO",
       database: "tkqnwnfo",
-      entities: ["src/domain/entities/*.ts"],
+      entities: [ `${ domainPath }/entities/*.{js,ts}`],
       synchronize: true,
-      migrations: ["src/domain/migrations/*.js"]
+      migrations: [`${ domainPath }/migrations/*.js`]
     })
 
     return this.datasource.initialize()
@@ -29,6 +32,7 @@ export class DbConnection {
         })
         .catch((err) => {
           Logger.error("Error during Data Source initialization", err)
+          throw err;
         })
 
   };
