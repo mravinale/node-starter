@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  ECR_REPOSITORY: 726564672946.dkr.ecr.us-east-1.amazonaws.com/node-starter
+  ECR_REPOSITORY: public.ecr.aws/b1x7g5t5/node-starter
   ECS_SERVICE: node-starter
   ECS_CLUSTER: node-starter
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json
@@ -60,9 +60,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+    - name: Login to ECR public
+      shell: bash
+      run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID  }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} -e us-east-1 amazon/aws-cli ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ env.ECR_REPOSITORY }}
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image

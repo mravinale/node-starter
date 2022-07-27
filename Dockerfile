@@ -7,17 +7,17 @@ CMD   ["/sbin/my_init"]
 # Copy source files to container
 COPY	. /var/www/node
 
-RUN npm install tsc --location=global
-
+# Install pm2 runner global
 RUN npm install pm2 --location=global --omit=optional
 
-# Install all my packages and build
+# Set working folder
 WORKDIR /var/www/node
 
+# Install all my packages and build
 RUN	yarn install && yarn build
 
 # Open local port 3000
 EXPOSE	3030
 
 # Run PM2 as a daemon managed by runit
-CMD ["pm2-runtime", "pm2.config.js" ]
+CMD ["pm2-runtime", "pm2.config.js", "--no-daemon"]

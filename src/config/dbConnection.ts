@@ -21,7 +21,7 @@ export class DbConnection {
       username: "tkqnwnfo",
       password: "WxTKFisDu7oX661MhEVmfNvHYwZUyypO",
       database: "tkqnwnfo",
-      entities: [ `${ domainPath }/entities/*.{js,ts}`],
+      entities: [ `${ domainPath }/entities/*.js`],
       synchronize: true,
       migrations: [`${ domainPath }/migrations/*.js`]
     })
