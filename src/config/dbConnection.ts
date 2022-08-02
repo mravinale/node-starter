@@ -16,12 +16,12 @@ export class DbConnection {
 
     this.datasource = new DataSource({
       type: "postgres",
-      host: "pellefant.db.elephantsql.com",
-      port: 5432,
-      username: "tkqnwnfo",
-      password: "WxTKFisDu7oX661MhEVmfNvHYwZUyypO",
-      database: "tkqnwnfo",
-      entities: [ `${ domainPath }/entities/*.js`],
+      host: constants.SQL.host,
+      port: constants.SQL.port,
+      username: constants.SQL.username,
+      password: constants.SQL.password,
+      database: constants.SQL.username,
+      entities: [ `${ domainPath }/entities/*.{js,ts}`],
       synchronize: true,
       migrations: [`${ domainPath }/migrations/*.js`]
     })

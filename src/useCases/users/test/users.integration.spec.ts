@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 import supertest from 'supertest';
 
-import { Server } from "../../../../config/server";
+import { Server } from "../../../config/server";
 // import { generateUserModel } from "../../../../utils/Models";
 const entityName: string = 'user';
 
-describe(`users`, () => {
+describe(`Users Controller`, () => {
 
   let server;
   let app;

@@ -11,9 +11,9 @@ export class UsersController extends Controller {
         super();
     }
 
-    @Get("{userId}")
-    public async get( userId: string ): Promise<IUserDto> {
-        return this.usersService.get(userId);
+    @Get("{id}")
+    public async get( id: string ): Promise<IUserDto> {
+        return this.usersService.get(id);
     }
 
     @Get()
