@@ -1,11 +1,12 @@
 export interface IPaginationDto { /** tsoa doesn't like generics */
-  count: number;
+  count?: number;
   page: number;
   limit: number;
-  sort: string;
-  filter: string;
-  totalPages: number;
-  docs: any[];
+  sort?: string;
+  filter?: string;
+  totalPages?: number;
+  docs?: any[];
+  field?: string;
 }
 
 export class PaginationDto implements IPaginationDto {
@@ -16,6 +17,7 @@ export class PaginationDto implements IPaginationDto {
   public docs!: any[];
   public filter!: string;
   public sort!: string;
+  public field!: string;
 
   constructor(args: IPaginationDto) {
     Object.assign(this, args);

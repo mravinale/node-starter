@@ -34,13 +34,13 @@ describe("Users Service", () => {
   it("should get paginated", async () => {
     // Arrange
     let model = generateUserModel();
-    when(mockedUsersRepository.getPaginated(anything()))
-        .thenResolve(new PaginationDto({
-          count: 0, docs: [model], filter: "", limit: 0, page: 0, sort: "", totalPages: 0
-        }));
+    let dto = new PaginationDto({
+      count: 0, docs: [model], filter: "", limit: 0, page: 0, sort: "", totalPages: 0
+    })
+    when(mockedUsersRepository.getPaginated(anything())).thenResolve(dto);
 
     // Act
-    const user = await service.getPaginated(model);
+    const user = await service.getPaginated(dto);
 
     // Assert
     expect(user.docs[0]).to.have.property("name");

@@ -16,7 +16,7 @@ export class UsersRepository {
         return await this.userRepository.findOneBy({id});
     }
 
-    public async getPaginated(args: any): Promise<PaginationDto> {
+    public async getPaginated(args: PaginationDto): Promise<PaginationDto> {
         const isNil = val => val == null
 
         let page = args.page >= 0 ? args.page : 0;

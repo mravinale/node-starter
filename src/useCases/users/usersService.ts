@@ -14,8 +14,8 @@ export class UsersService {
         return await this.usersRepository.get(id);
     }
 
-    public async getPaginated(user: any): Promise<PaginationDto> {
-         return await this.usersRepository.getPaginated(user);
+    public async getPaginated(pageDto: PaginationDto): Promise<PaginationDto> {
+         return await this.usersRepository.getPaginated(pageDto);
     }
 
     public create(user: IUserDto): Promise<IUserDto> {

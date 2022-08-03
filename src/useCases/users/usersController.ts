@@ -1,6 +1,6 @@
 import { Body, Controller, Query, Delete, Put, Get, Post, Route, Response, SuccessResponse } from "tsoa";
 import { IUserDto } from "./userDto";
-import { IPaginationDto } from "../../utils/PaginationDto";
+import { IPaginationDto, PaginationDto } from "../../utils/PaginationDto";
 import { UsersService } from "./usersService";
 import { injectable } from 'tsyringe';
 
@@ -24,7 +24,7 @@ export class UsersController extends Controller {
         @Query("field") field?: string,
         @Query("filter") filter?: string
     ): Promise<IPaginationDto> {
-        return this.usersService.getPaginated({page, limit, sort, field, filter});
+        return this.usersService.getPaginated(new PaginationDto({ page, limit, sort, field, filter }));
     }
 
     @Response(400, "Bad request")
