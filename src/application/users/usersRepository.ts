@@ -1,8 +1,8 @@
 import { IUserDto } from "./userDto";
 import { singleton } from 'tsyringe';
-import { DbConnection } from "../../config/dbConnection";
+import { DbConnection } from "../../infrastructure/config/dbConnection";
 import { User } from "../../domain/entities/User";
-import { PaginationDto } from "../../utils/PaginationDto";
+import { PaginationDto } from "../../infrastructure/utils/PaginationDto";
 import "reflect-metadata";
 
 @singleton()

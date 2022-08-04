@@ -1,6 +1,6 @@
 import { IUserDto } from "./userDto";
 import { singleton } from 'tsyringe';
-import { PaginationDto } from "../../utils/PaginationDto";
+import { PaginationDto } from "../../infrastructure/utils/PaginationDto";
 import "reflect-metadata";
 import { UsersRepository } from "./usersRepository";
 

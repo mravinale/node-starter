@@ -1,4 +1,4 @@
-import constants from './../config/constants';
+import constants from '../config/constants';
 import * as logger from 'winston';
 
 const date = new Date();

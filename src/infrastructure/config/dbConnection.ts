@@ -12,7 +12,7 @@ export class DbConnection {
     // const config = constants.SQL;
     Logger.info(`connecting to ${constants.environment} SQL ...`);
 
-    const domainPath = resolve(__dirname, '..', 'domain');
+    const domainPath = resolve(__dirname, '../..', 'domain');
 
     this.datasource = new DataSource({
       type: "postgres",

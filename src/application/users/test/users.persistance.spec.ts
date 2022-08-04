@@ -2,9 +2,9 @@ import "reflect-metadata";
 import { expect } from "chai";
 import { UsersRepository } from "../usersRepository";
 import { container } from "tsyringe";
-import { DbConnection } from "../../../config/dbConnection";
-import { generateUserModel } from "../../../utils/Models";
-import { PaginationDto } from "../../../utils/PaginationDto";
+import { DbConnection } from "../../../infrastructure/config/dbConnection";
+import { generateUserModel } from "../../../infrastructure/utils/Models";
+import { PaginationDto } from "../../../infrastructure/utils/PaginationDto";
 
 describe("Users Repository", () => {
   let repository: UsersRepository;
@@ -34,11 +34,14 @@ describe("Users Repository", () => {
 
   it("should get paginated", async () => {
 
-    // Act
-    const user = await repository.getPaginated(new PaginationDto({
+    // Arrange
+    let dto = new PaginationDto({
       count: 0, docs: [], filter: "", sort: "", totalPages: 0,
       page: 0, limit: 10
-    }));
+    })
+
+    // Act
+    const user = await repository.getPaginated(dto);
 
     // Assert
     expect(user.docs.find(u => u.id === model.id)).to.have.property("name");

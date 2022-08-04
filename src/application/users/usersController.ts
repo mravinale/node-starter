@@ -1,6 +1,6 @@
 import { Body, Controller, Query, Delete, Put, Get, Post, Route, Response, SuccessResponse } from "tsoa";
 import { IUserDto } from "./userDto";
-import { IPaginationDto, PaginationDto } from "../../utils/PaginationDto";
+import { IPaginationDto, PaginationDto } from "../../infrastructure/utils/PaginationDto";
 import { UsersService } from "./usersService";
 import { injectable } from 'tsyringe';
 

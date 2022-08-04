@@ -7,7 +7,7 @@
     "test": "yarn start:test",
     "start:local": "yarn build && yarn env:local nodemon",
     "start:dev": "yarn build && yarn env:dev ts-node-dev ./dist/src/index.js",
-    "start:test": "yarn build && yarn lint && yarn env:test nyc mocha --timeout 35000 ./dist/**/**/test/*.spec.js --exit",
+    "start:test": "yarn build && yarn lint && yarn env:test nyc mocha --timeout 35000 ./dist/src/application/**/test/*.spec.js --exit",
     "env:local": "cross-env NODE_ENV=local",
     "env:dev": "cross-env NODE_ENV=development",
     "env:test": "cross-env NODE_ENV=test",
@@ -15,7 +15,7 @@
     "build:tsoa": "tsoa spec-and-routes",
     "lint": "yarn build && tslint -c \"./tslint.json\" -p \"./tsconfig.json\"",
     "clean": "rm -rf ./dist && rm -rf ./build && mkdir build",
-    "copy:env": "cp -R ./src/config/env ./dist/src/config/env"
+    "copy:env": "cp -R src/infrastructure/config/env ./dist/src/infrastructure/config/env"
   },
   "main": "index.js",
   "repository": "https://github.com/mravinale/node-starter-v2.git",

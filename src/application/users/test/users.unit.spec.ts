@@ -3,8 +3,8 @@ import { expect } from "chai";
 import { UsersService } from "../usersService";
 import { UsersRepository } from "../usersRepository";
 import { UserDto } from "../userDto";
-import { PaginationDto } from "../../../utils/PaginationDto";
-import { generateUserModel, generateMockUUID } from "../../../utils/Models";
+import { PaginationDto } from "../../../infrastructure/utils/PaginationDto";
+import { generateUserModel, generateMockUUID } from "../../../infrastructure/utils/Models";
 import { mock, instance, when, anyString, anything } from "ts-mockito";
 
 describe("Users Service", () => {
