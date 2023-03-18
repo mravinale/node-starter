@@ -1,7 +1,5 @@
 # node-starter-v2
 
-[![node-starter](https://github.com/mravinale/node-starter-v2/actions/workflows/aws-ecs.yml/badge.svg)](https://github.com/mravinale/node-starter-v2/actions/workflows/aws-ecs.yml)
-
 ## Start application
  
 * Install dependencies `yarn install`
@@ -39,7 +37,4 @@
 
 ## Download latest docker image
 * https://gallery.ecr.aws/b1x7g5t5/node-starter
-
-## See it live deployed at ECS here:
-* [http://ec2-54-87-32-205.compute-1.amazonaws.com/docs](http://ec2-54-87-32-205.compute-1.amazonaws.com/docs/)
 
