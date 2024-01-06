@@ -1,4 +1,4 @@
-# node-starter-v2
+# node-starter
 
 ## Start application
  
